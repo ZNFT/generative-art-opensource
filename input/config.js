@@ -115,9 +115,9 @@ const addRarityPercentForLayer = (_rarityId, _layerId, _percentages) => {
  *************************************************************/
 
 // image width in pixels
-const width = 1000;
+const width = 420;
 // image height in pixels
-const height = 1000;
+const height = 420;
 // description for NFT in metadata file
 const description = "This is an NFT made by the coolest generative code.";
 // base url to use in metadata file
@@ -126,35 +126,37 @@ const baseImageUri = "https://hashlips/nft";
 // id for edition to start from
 const startEditionFrom = 1;
 // amount of NFTs to generate in edition
-const editionSize = 10;
+const editionSize = 20;
 // prefix to add to edition dna ids (to distinguish dna counts from different generation processes for the same collection)
 const editionDnaPrefix = 0
 
 // create required weights
 // for each weight, call 'addRarity' with the id and from which to which element this rarity should be applied
+// let rarityWeights = [
+//   addRarity('super_rare', 1, 1),
+//   addRarity('rare', 2, 5),
+//   addRarity('original', 5, 20)
+// ];
 let rarityWeights = [
-  addRarity('super_rare', 1, 1),
-  addRarity('rare', 2, 5),
-  addRarity('original', 5, 10)
-];
+  addRarity('original', 1, 20)
+]
 
 // create required layers
 // for each layer, call 'addLayer' with the id and optionally the positioning and size
 // the id would be the name of the folder in your input directory, e.g. 'ball' for ./input/ball
 const layers = [
-  addLayer('ball', { x: 0, y: 0 }, { width: width, height: height }),
-  addLayer('eye color'),
-  addLayer('iris'),
-  addLayer('shine'),
-  addLayer('bottom lid'),
-  addLayer('top lid')
+  addLayer('background', { x: 0, y: 0 }, { width: width, height: height }),
+  addLayer('body'),
+  addLayer('mouth'),
+  addLayer('eyes'),
+  addLayer('head_gear'),
 ];
 
 // provide any specific percentages that are required for a given layer and rarity level
 // all provided options are used based on their percentage values to decide which layer to select from
-addRarityPercentForLayer('super_rare', 'ball', { 'super_rare': 33, 'rare': 33, 'original': 33 });
-addRarityPercentForLayer('super_rare', 'eye color', { 'super_rare': 50, 'rare': 25, 'original': 25 });
-addRarityPercentForLayer('original', 'eye color', { 'super_rare': 50, 'rare': 25, 'original': 25 });
+// addRarityPercentForLayer('super_rare', 'ball', { 'super_rare': 33, 'rare': 33, 'original': 33 });
+// addRarityPercentForLayer('super_rare', 'eye color', { 'super_rare': 50, 'rare': 25, 'original': 25 });
+// addRarityPercentForLayer('original', 'eye color', { 'super_rare': 50, 'rare': 25, 'original': 25 });
 
 module.exports = {
   layers,

@@ -22,41 +22,13 @@ const saveImage = (_editionCount) => {
   );
 };
 
-// adds a signature to the top left corner of the canvas
-const signImage = (_sig) => {
-  ctx.fillStyle = "#000000";
-  ctx.font = "bold 30pt Courier";
-  ctx.textBaseline = "top";
-  ctx.textAlign = "left";
-  ctx.fillText(_sig, 40, 40);
-};
-
-// generate a random color hue
-const genColor = () => {
-  let hue = Math.floor(Math.random() * 360);
-  let pastel = `hsl(${hue}, 100%, 85%)`;
-  return pastel;
-};
-
-const drawBackground = () => {
-  ctx.fillStyle = genColor();
-  ctx.fillRect(0, 0, width, height);
-};
-
-// add metadata for individual nft edition
-const generateMetadata = (_dna, _edition, _attributesList) => {
-  let dateTime = Date.now();
-  let tempMetadata = {
-    dna: _dna.join(""),
-    name: `#${_edition}`,
-    description: description,
-    image: `${baseImageUri}/${_edition}`,
-    edition: _edition,
-    date: dateTime,
-    attributes: _attributesList,
-  };
-  return tempMetadata;
-};
+function saveJson(index, data) {
+  console.log(data)
+  fs.writeFileSync(
+    `./output/${index}.json`,
+    JSON.stringify(data)
+  )
+}
 
 // prepare attributes for the given element to be used as metadata
 const getAttributeForElement = (_element) => {
@@ -163,6 +135,36 @@ const writeMetaData = (_data) => {
   fs.writeFileSync("./output/_metadata.json", _data);
 };
 
+function generateJsonFile(index, attributesList) {
+  return {
+    name: "Irrelevant" + " " + "#" + index,
+    synbol: "",
+    description: "Artificial Irrelevant Bot Head",
+    seller_fee_basis_points: 500,
+    image: "image.png",
+    attributes: attributesList,
+    collection: {
+      name: "Gen 1 heads",
+      family: "Artificial Irrelevants"
+    },
+    properties: {
+      files: [
+        {
+          uri: "image.png",
+          type: "image/png"
+        }
+      ]
+    },
+    category: "image",
+    creators: [
+      {
+        address: "GqKcxYm7JkCRMVD1TZQW52NDd4VsdERLX2gSfmd18sw",
+        share: 100
+      }
+    ]
+  }
+}
+
 // holds which dna has already been used during generation
 let dnaListByRarity = {};
 // holds metadata for all NFTs
@@ -220,8 +222,6 @@ const startCreating = async () => {
     await Promise.all(loadedElements).then((elementArray) => {
       // create empty image
       ctx.clearRect(0, 0, width, height);
-      // draw a random background color
-      drawBackground();
       // store information about each layer to add it as meta information
       let attributesList = [];
       // draw each layer
@@ -229,13 +229,10 @@ const startCreating = async () => {
         drawElement(element);
         attributesList.push(getAttributeForElement(element));
       });
-      // add an image signature as the edition count to the top left of the image
-      signImage(`#${editionCount}`);
       // write the image to the output directory
       saveImage(editionCount);
-      let nftMetadata = generateMetadata(newDna, editionCount, attributesList);
-      metadataList.push(nftMetadata)
-      console.log('- metadata: ' + JSON.stringify(nftMetadata));
+      let json = generateJsonFile(editionCount, attributesList)
+      saveJson(editionCount, json);
       console.log('- edition ' + editionCount + ' created.');
       console.log();
     });
