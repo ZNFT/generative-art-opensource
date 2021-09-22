@@ -137,31 +137,31 @@ const writeMetaData = (_data) => {
 
 function generateJsonFile(index, attributesList) {
   return {
-    name: "Irrelevant" + " " + "#" + index,
-    synbol: "",
-    description: "Artificial Irrelevant Bot Head",
-    seller_fee_basis_points: 500,
-    image: "image.png",
-    attributes: attributesList,
-    collection: {
-      name: "Gen 1 heads",
-      family: "Artificial Irrelevants"
+    "name": "Irrelevant" + " " + "#" + index,
+    "symbol": "",
+    "description": "Artificial Irrelevant Bot Head",
+    "seller_fee_basis_points": 500,
+    "image": "image.png",
+    "attributes": attributesList,
+    "collection": {
+      "name": "Gen 1 heads",
+      "family": "Artificial Irrelevants"
     },
-    properties: {
-      files: [
+    "properties": {
+      "files": [
         {
-          uri: "image.png",
-          type: "image/png"
+          "uri": "image.png",
+          "type": "image/png"
+        }
+      ],
+      "category": "image",
+      "creators": [
+        {
+          "address": "GqKcxYm7JkCRMVD1TZQW52NDd4VsdERLX2gSfmd18sw",
+          "share": 100
         }
       ]
     },
-    category: "image",
-    creators: [
-      {
-        address: "GqKcxYm7JkCRMVD1TZQW52NDd4VsdERLX2gSfmd18sw",
-        share: 100
-      }
-    ]
   }
 }
 
