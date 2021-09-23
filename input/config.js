@@ -126,7 +126,7 @@ const baseImageUri = "https://hashlips/nft";
 // id for edition to start from
 const startEditionFrom = 1;
 // amount of NFTs to generate in edition
-const editionSize = 20;
+const editionSize = 1000;
 // prefix to add to edition dna ids (to distinguish dna counts from different generation processes for the same collection)
 const editionDnaPrefix = 0
 
@@ -138,25 +138,62 @@ const editionDnaPrefix = 0
 //   addRarity('original', 5, 20)
 // ];
 let rarityWeights = [
-  addRarity('original', 1, 20)
+  addRarity('common', 0, 1000),
+  addRarity('uncommon', 0, 1000),
+  addRarity('rare', 0, 1000),
+  addRarity('epic', 0, 1000),
+  addRarity('legendary', 0, 1000)
 ]
 
 // create required layers
 // for each layer, call 'addLayer' with the id and optionally the positioning and size
 // the id would be the name of the folder in your input directory, e.g. 'ball' for ./input/ball
 const layers = [
-  addLayer('background', { x: 0, y: 0 }, { width: width, height: height }),
-  addLayer('body'),
-  addLayer('mouth'),
-  addLayer('eyes'),
-  addLayer('head_gear'),
+  addLayer('Backgrounds', { x: 0, y: 0 }, { width: width, height: height }),
+  addLayer('Base Colors'),
+  addLayer('Damage'),
+  addLayer('Expression'),
+  addLayer('Headgear'),
 ];
+
+
 
 // provide any specific percentages that are required for a given layer and rarity level
 // all provided options are used based on their percentage values to decide which layer to select from
 // addRarityPercentForLayer('super_rare', 'ball', { 'super_rare': 33, 'rare': 33, 'original': 33 });
 // addRarityPercentForLayer('super_rare', 'eye color', { 'super_rare': 50, 'rare': 25, 'original': 25 });
 // addRarityPercentForLayer('original', 'eye color', { 'super_rare': 50, 'rare': 25, 'original': 25 });
+addRarityPercentForLayer('common', 'Damage', {'common':0, 'uncommon':34, 'rare':33, 'epic':33, 'legendary':0})
+addRarityPercentForLayer('legendary', 'Damage', {'common':0, 'uncommon':34, 'rare':33, 'epic':33, 'legendary':0})
+addRarityPercentForLayer('uncommon', 'Damage', {'common':0, 'uncommon':34, 'rare':33, 'epic':33, 'legendary':0})
+addRarityPercentForLayer('rare', 'Damage', {'common':0, 'uncommon':34, 'rare':33, 'epic':33, 'legendary':0})
+addRarityPercentForLayer('epic', 'Damage', {'common':0, 'uncommon':34, 'rare':33, 'epic':33, 'legendary':0})
+
+addRarityPercentForLayer('common', 'Backgrounds', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('legendary', 'Backgrounds', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('uncommon', 'Backgrounds', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('rare', 'Backgrounds', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('epic', 'Backgrounds', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+
+addRarityPercentForLayer('common', 'Base Colors', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('legendary', 'Base Colors', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('uncommon', 'Base Colors', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('rare', 'Base Colors', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('epic', 'Base Colors', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+
+addRarityPercentForLayer('common', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('legendary', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('uncommon', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('rare', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('epic', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+
+
+addRarityPercentForLayer('common', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('legendary', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('uncommon', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('rare', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('epic', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+
 
 module.exports = {
   layers,

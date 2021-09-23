@@ -11,6 +11,7 @@ const {
   rarityWeights,
 } = require("./input/config.js");
 const console = require("console");
+const { Console } = require("console");
 const canvas = createCanvas(width, height);
 const ctx = canvas.getContext("2d");
 
@@ -34,8 +35,8 @@ function saveJson(index, data) {
 const getAttributeForElement = (_element) => {
   let selectedElement = _element.layer.selectedElement;
   let attribute = {
-    name: selectedElement.name,
-    rarity: selectedElement.rarity,
+    trait_type: _element.layer.id,
+    value: selectedElement.name,
   };
   return attribute;
 };
@@ -44,6 +45,7 @@ const getAttributeForElement = (_element) => {
 // returns the image in a format usable by canvas
 const loadLayerImg = async (_layer) => {
   return new Promise(async (resolve) => {
+    console.log("layer impage " + `${_layer.selectedElement.path}`)
     const image = await loadImage(`${_layer.selectedElement.path}`);
     resolve({ layer: _layer, loadedImage: image });
   });
@@ -69,11 +71,30 @@ const constructLayerToDna = (_dna = [], _layers = [], _rarity) => {
       location: layer.location,
       position: layer.position,
       size: layer.size,
+      id: layer.id,
       selectedElement: {...selectedElement, rarity: _rarity },
     };
   });
   return mappedDnaToLayers;
 };
+
+// let _rarityFound = false;
+// rarityWeights.forEach((_rarityWeight) => {
+//   if (_rarityWeight.value === _rarityId) {
+//     let _percentArray = [];
+//     for (let percentType in _percentages) {
+//       _percentArray.push({
+//         id: percentType,
+//         percent: _percentages[percentType]
+//       })
+//     }
+//     _rarityWeight.layerPercent[_layerId] = _percentArray;
+//     _rarityFound = true;
+//   }
+// });
+// if (!_rarityFound) {
+//   console.log(`rarity ${_rarityId} not found, failed to add percentage information`);
+// }
 
 // check if the given dna is contained within the given dnaList 
 // return true if it is, indicating that this dna is already in use and should be recalculated
@@ -86,7 +107,7 @@ const getRandomRarity = (_rarityOptions) => {
   let randomPercent = Math.random() * 100;
   let percentCount = 0;
 
-  for (let i = 0; i <= _rarityOptions.length; i++) {
+  for (let i = 0; i < _rarityOptions.length; i++) {
     percentCount += _rarityOptions[i].percent;
     if (percentCount >= randomPercent) {
       console.log(`use random rarity ${_rarityOptions[i].id}`)
@@ -229,6 +250,12 @@ const startCreating = async () => {
         drawElement(element);
         attributesList.push(getAttributeForElement(element));
       });
+      attributesList.push(
+        {
+          "trait_type": "sequence",
+          "value": editionCount
+        }
+      )
       // write the image to the output directory
       saveImage(editionCount);
       let json = generateJsonFile(editionCount, attributesList)
