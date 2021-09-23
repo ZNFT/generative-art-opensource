@@ -187,7 +187,6 @@ addRarityPercentForLayer('uncommon', 'Expression', {'common':50, 'uncommon':25, 
 addRarityPercentForLayer('rare', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
 addRarityPercentForLayer('epic', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
 
-
 addRarityPercentForLayer('common', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
 addRarityPercentForLayer('legendary', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
 addRarityPercentForLayer('uncommon', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})

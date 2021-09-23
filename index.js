@@ -78,24 +78,6 @@ const constructLayerToDna = (_dna = [], _layers = [], _rarity) => {
   return mappedDnaToLayers;
 };
 
-// let _rarityFound = false;
-// rarityWeights.forEach((_rarityWeight) => {
-//   if (_rarityWeight.value === _rarityId) {
-//     let _percentArray = [];
-//     for (let percentType in _percentages) {
-//       _percentArray.push({
-//         id: percentType,
-//         percent: _percentages[percentType]
-//       })
-//     }
-//     _rarityWeight.layerPercent[_layerId] = _percentArray;
-//     _rarityFound = true;
-//   }
-// });
-// if (!_rarityFound) {
-//   console.log(`rarity ${_rarityId} not found, failed to add percentage information`);
-// }
-
 // check if the given dna is contained within the given dnaList 
 // return true if it is, indicating that this dna is already in use and should be recalculated
 const isDnaUnique = (_DnaList = [], _dna = []) => {
@@ -161,7 +143,7 @@ function generateJsonFile(index, attributesList) {
     "name": "Irrelevant" + " " + "#" + index,
     "symbol": "",
     "description": "Artificial Irrelevant Bot Head",
-    "seller_fee_basis_points": 500,
+    "seller_fee_basis_points": 700,
     "image": "image.png",
     "attributes": attributesList,
     "collection": {
