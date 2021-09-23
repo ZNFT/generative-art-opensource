@@ -141,8 +141,7 @@ let rarityWeights = [
   addRarity('common', 0, 1000),
   addRarity('uncommon', 0, 1000),
   addRarity('rare', 0, 1000),
-  addRarity('epic', 0, 1000),
-  addRarity('legendary', 0, 1000)
+  addRarity('epic', 0, 1000)
 ]
 
 // create required layers
@@ -150,10 +149,10 @@ let rarityWeights = [
 // the id would be the name of the folder in your input directory, e.g. 'ball' for ./input/ball
 const layers = [
   addLayer('Backgrounds', { x: 0, y: 0 }, { width: width, height: height }),
-  addLayer('Base Colors'),
+  addLayer('Body'),
   addLayer('Damage'),
   addLayer('Expression'),
-  addLayer('Headgear'),
+  addLayer('Equipment'),
 ];
 
 
@@ -163,35 +162,30 @@ const layers = [
 // addRarityPercentForLayer('super_rare', 'ball', { 'super_rare': 33, 'rare': 33, 'original': 33 });
 // addRarityPercentForLayer('super_rare', 'eye color', { 'super_rare': 50, 'rare': 25, 'original': 25 });
 // addRarityPercentForLayer('original', 'eye color', { 'super_rare': 50, 'rare': 25, 'original': 25 });
-addRarityPercentForLayer('common', 'Damage', {'common':0, 'uncommon':34, 'rare':33, 'epic':33, 'legendary':0})
-addRarityPercentForLayer('legendary', 'Damage', {'common':0, 'uncommon':34, 'rare':33, 'epic':33, 'legendary':0})
-addRarityPercentForLayer('uncommon', 'Damage', {'common':0, 'uncommon':34, 'rare':33, 'epic':33, 'legendary':0})
-addRarityPercentForLayer('rare', 'Damage', {'common':0, 'uncommon':34, 'rare':33, 'epic':33, 'legendary':0})
-addRarityPercentForLayer('epic', 'Damage', {'common':0, 'uncommon':34, 'rare':33, 'epic':33, 'legendary':0})
+addRarityPercentForLayer('common', 'Damage', {'common':45, 'uncommon':35, 'rare':20, 'epic':0})
+addRarityPercentForLayer('uncommon', 'Damage', {'common':45, 'uncommon':35, 'rare':20, 'epic':0})
+addRarityPercentForLayer('rare', 'Damage', {'common':45, 'uncommon':35, 'rare':20, 'epic':0})
+addRarityPercentForLayer('epic', 'Damage', {'common':45, 'uncommon':35, 'rare':20, 'epic':0})
 
-addRarityPercentForLayer('common', 'Backgrounds', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('legendary', 'Backgrounds', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('uncommon', 'Backgrounds', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('rare', 'Backgrounds', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('epic', 'Backgrounds', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('common', 'Backgrounds', {'common':42, 'uncommon':30, 'rare':20, 'epic':8})
+addRarityPercentForLayer('uncommon', 'Backgrounds', {'common':42, 'uncommon':30, 'rare':20, 'epic':8})
+addRarityPercentForLayer('rare', 'Backgrounds', {'common':42, 'uncommon':30, 'rare':20, 'epic':8})
+addRarityPercentForLayer('epic', 'Backgrounds', {'common':42, 'uncommon':30, 'rare':20, 'epic':8})
 
-addRarityPercentForLayer('common', 'Base Colors', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('legendary', 'Base Colors', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('uncommon', 'Base Colors', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('rare', 'Base Colors', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('epic', 'Base Colors', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('common', 'Body', {'common':48, 'uncommon':32, 'rare':15, 'epic':5})
+addRarityPercentForLayer('uncommon', 'Body', {'common':48, 'uncommon':32, 'rare':15, 'epic':5})
+addRarityPercentForLayer('rare', 'Body', {'common':48, 'uncommon':32, 'rare':15, 'epic':5})
+addRarityPercentForLayer('epic', 'Body', {'common':48, 'uncommon':32, 'rare':15, 'epic':5})
 
-addRarityPercentForLayer('common', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('legendary', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('uncommon', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('rare', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('epic', 'Expression', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('common', 'Expression', {'common':40, 'uncommon':36, 'rare':18, 'epic':6})
+addRarityPercentForLayer('uncommon', 'Expression', {'common':40, 'uncommon':36, 'rare':18, 'epic':6})
+addRarityPercentForLayer('rare', 'Expression', {'common':40, 'uncommon':36, 'rare':18, 'epic':6})
+addRarityPercentForLayer('epic', 'Expression', {'common':40, 'uncommon':36, 'rare':18, 'epic':6})
 
-addRarityPercentForLayer('common', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('legendary', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('uncommon', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('rare', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
-addRarityPercentForLayer('epic', 'Headgear', {'common':50, 'uncommon':25, 'rare':15, 'epic':5, 'legendary':5})
+addRarityPercentForLayer('common', 'Equipment', {'common':46, 'uncommon':30, 'rare':20, 'epic':4})
+addRarityPercentForLayer('uncommon', 'Equipment', {'common':46, 'uncommon':30, 'rare':20, 'epic':4})
+addRarityPercentForLayer('rare', 'Equipment', {'common':46, 'uncommon':30, 'rare':20, 'epic':4})
+addRarityPercentForLayer('epic', 'Equipment', {'common':46, 'uncommon':30, 'rare':20, 'epic':4})
 
 
 module.exports = {
