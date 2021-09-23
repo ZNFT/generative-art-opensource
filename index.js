@@ -161,7 +161,11 @@ function generateJsonFile(index, attributesList) {
       "creators": [
         {
           "address": "GqKcxYm7JkCRMVD1TZQW52NDd4VsdERLX2gSfmd18sw",
-          "share": 100
+          "share": 50
+        },
+        {
+          "address": "H5eoYssV8hfFwg5PJMm4i12hoFPU4PtSbP21qLGzeAjV",
+          "share": 50
         }
       ]
     },
