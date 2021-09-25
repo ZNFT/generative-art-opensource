@@ -143,7 +143,7 @@ function generateJsonFile(index, attributesList) {
     "name": "Irrelevant" + " " + "#" + index,
     "symbol": "",
     "description": "Artificial Irrelevant Bot Head",
-    "seller_fee_basis_points": 700,
+    "seller_fee_basis_points": 800,
     "image": "image.png",
     "attributes": attributesList,
     "collection": {
@@ -160,7 +160,7 @@ function generateJsonFile(index, attributesList) {
       "category": "image",
       "creators": [
         {
-          "address": "GqKcxYm7JkCRMVD1TZQW52NDd4VsdERLX2gSfmd18sw",
+          "address": "GqKcxYm7JkCRMVD1zTZQW52NDd4VsdERLX2gSfmd18sw",
           "share": 50
         },
         {
